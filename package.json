@@ -1,0 +1,39 @@
+{
+  "name": "react_tutor",
+  "version": "1.0.0",
+  "description": "``` npm install --save-dev webpack ```",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^1.0.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.4.1",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "webpack": "^4.16.1",
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.4"
+  },
+  "scripts": {
+    "start": "./node_modules/.bin/webpack-dev-server --mode development --open",
+    "watch": "./node_modules/.bin/webpack --watch --mode development",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "./node_modules/.bin/webpack --mode development --module-bind js=babel-loader",
+    "build": "./node_modules/.bin/webpack --mode production --module-bind js=babel-loader"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Definence/react_tutor.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Definence/react_tutor/issues"
+  },
+  "homepage": "https://github.com/Definence/react_tutor#readme"
+}
