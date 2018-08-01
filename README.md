@@ -18,4 +18,5 @@ Packages:
 npm install bootstrap -s
 npm install --save react-router
 npm install --save react-router-dom
+npm install --save history
 ```

@@ -1,10 +1,10 @@
-import React from 'react'
-import { Router, Route, Switch, Link } from 'react-router-dom'
-import createBrowserHistory from 'history/createBrowserHistory'
-import Archives from './pages/Archives'
-import Layout from './pages/Layout'
-import Featured from './pages/Featured'
-import Settings from './pages/Settings'
+import React                      from 'react'
+import { Router, Route, Switch }  from 'react-router-dom'
+import createBrowserHistory       from 'history/createBrowserHistory'
+import Archives                   from './pages/Archives'
+import Layout                     from './pages/Layout'
+import Featured                   from './pages/Featured'
+import Settings                   from './pages/Settings'
 
 const history = createBrowserHistory()
 
