@@ -1,2 +1,2 @@
-import App from "./App";
-import style from "./main.css";
+import App from "./client"
+import style from "./main.css"

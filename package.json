@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "``` npm install --save-dev webpack ```",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "bootstrap": "^4.1.2",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1"
+  },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
@@ -20,11 +24,11 @@
     "webpack-dev-server": "^3.1.4"
   },
   "scripts": {
-    "start": "./node_modules/.bin/webpack-dev-server --mode development --open",
-    "watch": "./node_modules/.bin/webpack --watch --mode development",
+    "start": "webpack-dev-server --mode development --open",
+    "watch": "webpack --watch --mode development",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "./node_modules/.bin/webpack --mode development --module-bind js=babel-loader",
-    "build": "./node_modules/.bin/webpack --mode production --module-bind js=babel-loader"
+    "dev": "webpack --mode development --module-bind js=babel-loader",
+    "build": "webpack --mode production --module-bind js=babel-loader"
   },
   "repository": {
     "type": "git",
