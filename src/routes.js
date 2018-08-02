@@ -5,6 +5,7 @@ import Archives                   from './pages/Archives'
 import Layout                     from './pages/Layout'
 import Featured                   from './pages/Featured'
 import Settings                   from './pages/Settings'
+import Article                    from './pages/Article'
 
 const history = createBrowserHistory()
 
@@ -15,6 +16,7 @@ const routes = () => (
         <Route exact path="/" component={Archives} />
         <Route path="/featured" component={Featured} />
         <Route path="/settings" component={Settings} />
+        <Route path="/articles/:number" component={Article} />
         {/* <Courses>
             <Route path="/courses/html" component={HTML} />
             <Route path="/courses/css" component={CSS} />
