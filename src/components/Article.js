@@ -6,9 +6,10 @@ export default class Archives extends React.Component {
   }
 
   render() {
+    const { params } = this.props.match
     return (
       <div>
-        <p>Article: #{this.props.match.params.number}</p>
+        <p>Article: #{params.number}</p>
         <button className='btn btn-secondary' onClick={this.handleClick.bind(this)}>Article props</button>
       </div>
     )
