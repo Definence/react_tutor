@@ -4,11 +4,14 @@
   "description": "``` npm install --save-dev webpack ```",
   "main": "index.js",
   "dependencies": {
+    "axios": "^0.18.0",
     "bootstrap": "^4.1.2",
     "history": "^4.7.2",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
     "webpack-preset": "^0.2.0",
     "webpack-preset-babel": "^0.2.0",
     "webpack-preset-babel-stage-1": "^0.2.0"

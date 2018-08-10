@@ -4,8 +4,11 @@ import createBrowserHistory       from 'history/createBrowserHistory'
 import { createStore,
          combineReducers,
          applyMiddleware }        from 'redux'
-import logger                     from './middlewares/logger'
-import errorHandler               from './middlewares/error-handler'
+import logger                     from 'redux-logger'
+import thunk                      from 'redux-thunk'
+import axios                      from 'axios'
+// import logger                     from './middlewares/logger'
+// import errorHandler               from './middlewares/error-handler'
 import historyReducer             from './reducers/history'
 import userReducer                from './reducers/user'
 import errorReducer               from './reducers/error'
@@ -22,7 +25,11 @@ const history = createBrowserHistory(),
         history: historyReducer,
         error: errorReducer
       }),
-      middleware = applyMiddleware(logger, errorHandler),
+      middleware = applyMiddleware(
+        // errorHandler,
+        thunk,
+        logger
+      ),
       // no default state is specified here, but second argument is store's initial state
       store = createStore(reducers, middleware)
 
@@ -46,13 +53,44 @@ const routes = () => (
 )
 
 store.subscribe(() => {
-  console.log('Store has changed', store.getState())
+  // console.log('Store has changed', store.getState())
 })
 
-store.dispatch({type: 'CHANGE_NAME', payload: 'Vasya'})
-store.dispatch({type: 'CHANGE_AGE', payload: 22})
-store.dispatch({type: 'CHANGE_AGE', payload: 30})
-store.dispatch({type: 'ERROR', payload: 30})
+// store.dispatch({type: 'CHANGE_NAME', payload: 'Vasya'})
+// store.dispatch({type: 'CHANGE_AGE', payload: 22})
+// store.dispatch({type: 'CHANGE_AGE', payload: 30})
+// store.dispatch({type: 'ERROR', payload: 30})
+
+// for testing
+fetch('http://rest.learncode.academy/api/axife/list', {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+      name: "John",
+      age: 36,
+      male: true
+    }),
+})
+// .then(response => response.json()) // response.json() returns a promise
+// .then((response) => {
+//   console.log("You saved this item", response); //returns the new item along with its ID
+// })
+
+// async (thunk)
+store.dispatch((dispatch) => {
+  dispatch({type: "FETCH_USERS_START"})
+  // do smth async
+  axios.get('http://rest.learncode.academy/api/axife/list')
+    .then(response => {
+      dispatch({type: "FETCH_USERS_COMPLETED", payload: response.data})
+    })
+    .catch(error => {
+      dispatch({type: "FETCH_USERS_ERROR", payload: error})
+    })
+  // dispatch({})
+})
 
 export default routes
 

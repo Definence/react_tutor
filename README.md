@@ -15,9 +15,12 @@ To see page with status bar:
 
 Packages:
 ```
-npm i bootstrap -s
-npm i -s react-router
-npm i -s react-router-dom
-npm i -s history
-npm i -s redux
+npm install --save bootstrap
+npm install --save react-router
+npm install --save react-router-dom
+npm install --save history
+npm install --save redux
+npm install --save redux-logger
+npm install --save redux-thunk
+npm install --save axios
 ```
