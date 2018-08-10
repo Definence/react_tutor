@@ -1,6 +1,8 @@
 import React                      from 'react'
 import { Router, Route, Switch }  from 'react-router-dom'
 import createBrowserHistory       from 'history/createBrowserHistory'
+import { createStore }            from 'redux'
+import reducer                    from './reducers/main'
 import Home                       from './components/Home'
 import Layout                     from './components/Layout'
 import Featured                   from './components/Featured'
@@ -8,7 +10,9 @@ import Settings                   from './components/Settings'
 import Articles                   from './components/articles/Articles'
 import Buttons                    from './components/Buttons'
 
-const history = createBrowserHistory()
+const history = createBrowserHistory(),
+      initState = 0,
+      store = createStore(reducer, initState)
 
 const routes = () => (
   <Router history={history}>
@@ -28,6 +32,16 @@ const routes = () => (
     </Layout>
   </Router>
 )
+
+store.subscribe(() => {
+  console.log('Store has changed', store.getState())
+})
+
+store.dispatch({type: 'INC', payload: 1})
+store.dispatch({type: 'INC', payload: 3})
+store.dispatch({type: 'INC', payload: 3})
+store.dispatch({type: 'DEC', payload: 1})
+store.dispatch({type: 'DEC', payload: 2})
 
 export default routes
 
