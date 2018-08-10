@@ -5,7 +5,7 @@ import Home                       from './components/Home'
 import Layout                     from './components/Layout'
 import Featured                   from './components/Featured'
 import Settings                   from './components/Settings'
-import Article                    from './components/Article'
+import Articles                   from './components/articles/Articles'
 import Buttons                    from './components/Buttons'
 
 const history = createBrowserHistory()
@@ -14,10 +14,10 @@ const routes = () => (
   <Router history={history}>
     <Layout>
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/home" component={Home} />
         <Route path="/featured" component={Featured} />
         <Route path="/settings" component={Settings} />
-        <Route path="/articles/:number" component={Article} />
+        <Route path="/articles" component={Articles} />
         <Route path="/buttons" component={Buttons} />
         {/* <Courses>
             <Route path="/courses/html" component={HTML} />

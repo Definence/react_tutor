@@ -5,9 +5,9 @@ Materials:
 
 ## Instructions
 
-To run server:
+To run application:
 ```
-npm run start
+npm start
 ```
 
 To see page with status bar:
