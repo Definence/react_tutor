@@ -8,7 +8,10 @@
     "history": "^4.7.2",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
-    "redux": "^4.0.0"
+    "redux": "^4.0.0",
+    "webpack-preset": "^0.2.0",
+    "webpack-preset-babel": "^0.2.0",
+    "webpack-preset-babel-stage-1": "^0.2.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

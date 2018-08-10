@@ -1,8 +1,10 @@
 import React                      from 'react'
 import { Router, Route, Switch }  from 'react-router-dom'
 import createBrowserHistory       from 'history/createBrowserHistory'
-import { createStore }            from 'redux'
-import reducer                    from './reducers/main'
+import { createStore,
+        combineReducers }         from 'redux'
+import historyReducer             from './reducers/history'
+import userReducer                from './reducers/user'
 import Home                       from './components/Home'
 import Layout                     from './components/Layout'
 import Featured                   from './components/Featured'
@@ -11,8 +13,11 @@ import Articles                   from './components/articles/Articles'
 import Buttons                    from './components/Buttons'
 
 const history = createBrowserHistory(),
-      initState = 0,
-      store = createStore(reducer, initState)
+      reducers = combineReducers({
+        user: userReducer,
+        history: historyReducer
+      }),
+      store = createStore(reducers) // second argument is store's initial state
 
 const routes = () => (
   <Router history={history}>
@@ -37,11 +42,9 @@ store.subscribe(() => {
   console.log('Store has changed', store.getState())
 })
 
-store.dispatch({type: 'INC', payload: 1})
-store.dispatch({type: 'INC', payload: 3})
-store.dispatch({type: 'INC', payload: 3})
-store.dispatch({type: 'DEC', payload: 1})
-store.dispatch({type: 'DEC', payload: 2})
+store.dispatch({type: 'CHANGE_NAME', payload: 'Vasya'})
+store.dispatch({type: 'CHANGE_AGE', payload: 22})
+store.dispatch({type: 'CHANGE_AGE', payload: 30})
 
 export default routes
 
