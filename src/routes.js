@@ -2,9 +2,13 @@ import React                      from 'react'
 import { Router, Route, Switch }  from 'react-router-dom'
 import createBrowserHistory       from 'history/createBrowserHistory'
 import { createStore,
-        combineReducers }         from 'redux'
+         combineReducers,
+         applyMiddleware }        from 'redux'
+import logger                     from './middlewares/logger'
+import errorHandler               from './middlewares/error-handler'
 import historyReducer             from './reducers/history'
 import userReducer                from './reducers/user'
+import errorReducer               from './reducers/error'
 import Home                       from './components/Home'
 import Layout                     from './components/Layout'
 import Featured                   from './components/Featured'
@@ -15,9 +19,12 @@ import Buttons                    from './components/Buttons'
 const history = createBrowserHistory(),
       reducers = combineReducers({
         user: userReducer,
-        history: historyReducer
+        history: historyReducer,
+        error: errorReducer
       }),
-      store = createStore(reducers) // second argument is store's initial state
+      middleware = applyMiddleware(logger, errorHandler),
+      // no default state is specified here, but second argument is store's initial state
+      store = createStore(reducers, middleware)
 
 const routes = () => (
   <Router history={history}>
@@ -45,6 +52,7 @@ store.subscribe(() => {
 store.dispatch({type: 'CHANGE_NAME', payload: 'Vasya'})
 store.dispatch({type: 'CHANGE_AGE', payload: 22})
 store.dispatch({type: 'CHANGE_AGE', payload: 30})
+store.dispatch({type: 'ERROR', payload: 30})
 
 export default routes
 
